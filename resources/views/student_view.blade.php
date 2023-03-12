@@ -11,15 +11,17 @@
     <title>View Student</title>
   </head>
   <body>
-    <div class="conatiner">
+    <x-layout/>
+    <div class="conatiner" style="margin-top:25px;">
         <table class="table">
             <thead>
                 <tr>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Gender</th>
-                    <th>Address</th>
+                    <!-- <th>Address</th> -->
                     <th>dob</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,9 +29,17 @@
                     <tr>
                         <td>{{$student['name']}}</td>
                         <td>{{$student['email']}}</td>
-                        <td>{{$student['gender']}}</td>
+                        <!-- <td>{{$student['gender']}}</td> -->
                         <td>{{$student['address']}}</td>
                         <td>{{$student['dob']}}</td>
+                        <td>
+                            <a href="{{route('student.delete', ['id'=> $student->student_id])}}">
+                                <button class="btn btn-danger">Delete</button>
+                            </a>
+                            <a href="{{route('student.edit', ['id'=> $student->student_id])}}">
+                            <button class="btn btn-primary">Update</button>
+                            </a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

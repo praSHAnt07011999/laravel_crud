@@ -19,12 +19,10 @@ Route::get('/', function () {
     return view('student');
 });
 
-Route::get('/students', function () {
-    $students = Student::all();
-    echo "<pre>";
-    print_r($students->toArray());
-});
-
 Route::get('/register', [RegistrationController::class, 'index']);
 Route::post('/register', [RegistrationController::class, 'register']);
-Route::get('/student/view', [RegistrationController::class, 'view']);
+Route::get('/students', [RegistrationController::class, 'view']);
+Route::get('/students/create/', [RegistrationController::class, 'create'])->name('student.create');
+Route::get('/students/delete/{id}', [RegistrationController::class, 'delete'])->name('student.delete');
+Route::get('/students/edit/{id}', [RegistrationController::class, 'edit'])->name('student.edit');
+Route::post('/students/update/{id}', [RegistrationController::class, 'update'])->name('student.update');
