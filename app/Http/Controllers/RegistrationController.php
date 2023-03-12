@@ -33,5 +33,13 @@ class RegistrationController extends Controller
         $student->dob = $request['dob'];
         $student->password = md5($request['password']);
         $student->save();
+
+        return redirect('/student/view');
+    }
+
+    public function view(Request $request){
+        $students = Student::all();
+        $data = compact('students');
+        return view('student_view')->with($data);
     }
 }
